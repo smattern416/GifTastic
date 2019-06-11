@@ -1,4 +1,4 @@
 $(document).ready(function(){
     // variables
-    var topics = 
+    var topics = ["Survivor", "The Bachelor", "Love Island"];
 )}
