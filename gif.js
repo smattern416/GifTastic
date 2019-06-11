@@ -4,19 +4,30 @@ $(document).ready(function(){
 
     // function for displaying the images
 
-    function images() {
-        $("#images").empty();
+    function display() {
+        $("#display").empty();
         var input = $(this).attr("data");
-        var limit = 10;
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + input + "&limit=" + limit + "&api_key=aD1fo0UXpTYcfSTNLvmDA6t3PUeZRwyR";
+        var results = 10;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + input + "&results=" + results + "&api_key=aD1fo0UXpTYcfSTNLvmDA6t3PUeZRwyR";
 
         $.ajax({
             url: queryURL,
             method: "Get"
         }).then(function(response) {
 
+            for(var i = 0; i<results; i++){
+
+                var image = $("<img>");
+                
+                image.attr("src", response.data[i].images.original_still.url);
+                image.attr("data-still", response.data[i].images.original_still.url);
+                
+
+
+            }
+
         }
     }
 
 
-)}
+})
