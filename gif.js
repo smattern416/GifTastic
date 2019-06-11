@@ -17,6 +17,9 @@ $(document).ready(function(){
 
             for(var i = 0; i<results; i++){
 
+                var displayDiv = $("<div>");
+                displayDiv.addClass("holder");
+
                 var image = $("<img>");
                 
                 image.attr("src", response.data[i].images.original_still.url);
@@ -30,9 +33,16 @@ $(document).ready(function(){
                 var displayRating = $("<p>").text("Rating: " + rating);
                 displayDiv.append(displayRating);
 
+                $("#display").append(displayDiv);
+
             }
 
         });
+    }
+    function renderButtons(){
+        $("#buttons").empty();
+
+        
     }
 
 
