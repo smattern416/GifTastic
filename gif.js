@@ -21,12 +21,18 @@ $(document).ready(function(){
                 
                 image.attr("src", response.data[i].images.original_still.url);
                 image.attr("data-still", response.data[i].images.original_still.url);
-                
+                image.attr("data-animate", response.data[i].images.original_still.url);
+                image.attr("data-state", "still");
+                image.attr("class", "gif");
+                displayDiv.append(image);
 
+                var rating = response.data[i].rating;
+                var displayRating = $("<p>").text("Rating: " + rating);
+                displayDiv.append(displayRating);
 
             }
 
-        }
+        });
     }
 
 
