@@ -47,10 +47,16 @@ $(document).ready(function(){
             var newBtn = $("<button>")
             newBtn.attr("class", "btn btn-default");
             newBtn.attr("id", "input");
-            newBtn.attr("data-name", displayedButtons[b]);
-            newBtn.text(displayedButtons[b]);
+            newBtn.attr("data-name", buttons[b]);
+            newBtn.text(buttons[b]);
             $("#buttons").append(newBtn);
         }
+    }
+
+    function imageControl() {
+        var state = $(this).attr("data-state");
+        var animate = $(this).attr("data-animate");
+        var still = $(this).attr("data-still");
     }
 
 
