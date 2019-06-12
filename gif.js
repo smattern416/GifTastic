@@ -57,6 +57,15 @@ $(document).ready(function(){
         var state = $(this).attr("data-state");
         var animate = $(this).attr("data-animate");
         var still = $(this).attr("data-still");
+
+        if(state == "still") {
+            $(this).attr("src", stillImage);
+            $(this).attr("data-state", "animate");
+        }
+        else if(state == "animate") {
+            $(this).attr("src", stillImage);
+            $(this).attr("data-state", "still");
+        }
     }
 
 
