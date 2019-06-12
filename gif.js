@@ -42,7 +42,15 @@ $(document).ready(function(){
     function renderButtons(){
         $("#buttons").empty();
 
-        
+
+        for(var b = 0; b < buttons.length; b++){
+            var newBtn = $("<button>")
+            newBtn.attr("class", "btn btn-default");
+            newBtn.attr("id", "input");
+            newBtn.attr("data-name", displayedButtons[b]);
+            newBtn.text(displayedButtons[b]);
+            $("#buttons").append(newBtn);
+        }
     }
 
 
