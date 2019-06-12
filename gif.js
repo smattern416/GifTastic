@@ -67,6 +67,18 @@ $(document).ready(function(){
             $(this).attr("data-state", "still");
         }
     }
+    $("#submitBtn").on("click", function(){
+        var input = $("#user-input").val().trim();
+        form.reset();
+        buttons.push(input);
+
+        renderButtons();
+
+        return false;
+
+    }
+         
+    )
 
 
 })
