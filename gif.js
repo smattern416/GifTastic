@@ -4,16 +4,16 @@ $(document).ready(function(){
 
     // function for displaying the images
 
-    function display() {
+    function displayImg() {
         $("#display").empty();
-        var input = $(this).attr("data");
+        var search = $(this).attr("data");
         var results = 10;
-        var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC" + input + "&results=" + results + "&api_key=aD1fo0UXpTYcfSTNLvmDA6t3PUeZRwyR";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&limit=" + limit + "&api_key=aD1fo0UXpTYcfSTNLvmDA6t3PUeZRwyR";
 
         $.ajax({
             url: queryURL,
-            method: "Get"
-        }).then(function(response) {
+            method: "GET"
+        }).done(function(response) {
 
             for(var i = 0; i<results; i++){
 
@@ -46,7 +46,7 @@ $(document).ready(function(){
         for(var b = 0; b < topics.length; b++){
             var newBtn = $("<button>")
             newBtn.attr("class", "btn btn-default");
-            newBtn.attr("id", "input");
+            newBtn.attr("id", "search");
             newBtn.attr("data-name", topics[b]);
             newBtn.text(topics[b]);
             $("#topics").append(newBtn);
@@ -68,9 +68,9 @@ $(document).ready(function(){
         }
     }
     $("#submitBtn").on("click", function(){
-        var input = $("#above-search").val().trim();
+        var search = $("#above-search").val().trim();
         form.reset();
-        topics.push(input);
+        topics.push(search);
 
         renderButtons();
 
@@ -80,7 +80,7 @@ $(document).ready(function(){
          
     )
     renderButtons();
-    $document.on("click", "#input", display);
+    $document.on("click", "#search", displayImg);
     $document.on("click", ".gif", imageChangeState);
 
 
