@@ -6,8 +6,8 @@ $(document).ready(function(){
 
     function displayImg() {
         $("#display").empty();
-        var search = $(this).attr("data");
-        var results = 10;
+        var search = $(this).attr("data-name");
+        var limit = 10;
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&limit=" + limit + "&api_key=aD1fo0UXpTYcfSTNLvmDA6t3PUeZRwyR";
 
         $.ajax({
@@ -15,7 +15,7 @@ $(document).ready(function(){
             method: "GET"
         }).done(function(response) {
 
-            for(var i = 0; i<results; i++){
+            for(var i = 0; i<limit; i++){
 
                 var displayDiv = $("<div>");
                 displayDiv.addClass("holder");
@@ -40,6 +40,8 @@ $(document).ready(function(){
         });
     }
     function renderButtons(){
+        
+
         $("#topics").empty();
 
 
@@ -67,12 +69,14 @@ $(document).ready(function(){
             $(this).attr("data-state", "still");
         }
     }
-    $("#submitBtn").on("click", function(){
-        var search = $("#above-search").val().trim();
-        form.reset();
+    $("#submitBtn").on("click", function(event){
+        event.preventDefault()
+        var search = $(".searchInput").val();
+        
         topics.push(search);
+        
 
-        renderButtons();
+        renderButtons();``
 
         return false;
 
@@ -80,8 +84,8 @@ $(document).ready(function(){
          
     )
     renderButtons();
-    $document.on("click", "#search", displayImg);
-    $document.on("click", ".gif", imageChangeState);
+    $(document).on("click", ".btn-default", displayImg);
+    $(document).on("click", ".gif", imageControl);
 
 
 
